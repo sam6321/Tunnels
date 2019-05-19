@@ -14,12 +14,13 @@ public class TileGenerator : MonoBehaviour
     [SerializeField]
     private Vector2Int size = new Vector2Int(10, 10);
 
-    [SerializeField]
     private GameObject[] tiles;
+    private ParticleSystem sharedOnDrillParticleSystem;
 
     // Start is called before the first frame update
     void Start()
     {
+        sharedOnDrillParticleSystem = GetComponent<ParticleSystem>();
         Generate();
     }
 
@@ -32,6 +33,7 @@ public class TileGenerator : MonoBehaviour
             {
                 GameObject tile = Instantiate(tilePrefab, tileContainer);
                 tile.transform.position = new Vector3(x, -y) * tilingSize;
+                tile.GetComponent<Tile>().OnDrillParticleSystem = sharedOnDrillParticleSystem;
             }
         }
     }
