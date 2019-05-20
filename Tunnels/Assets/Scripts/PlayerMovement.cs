@@ -10,17 +10,20 @@ public class PlayerMovement : MonoBehaviour
     private new Rigidbody2D rigidbody;
     private Vector2 movement = new Vector2();
     private int groundedMask;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         collider = GetComponent<CircleCollider2D>();
         rigidbody = GetComponent<Rigidbody2D>();
         groundedMask = ~LayerMask.GetMask("Player");
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
+        spriteRenderer.flipX = movement.x < 0;
     }
 
     void FixedUpdate()
