@@ -4,9 +4,6 @@
 public class Tile : MonoBehaviour
 {
     [SerializeField]
-    private GameObject onBreakParticles;
-
-    [SerializeField]
     private int health = 10;
 
     private int startHealth;
@@ -15,7 +12,6 @@ public class Tile : MonoBehaviour
     private ParticleSystem.EmitParams p = new ParticleSystem.EmitParams();
 
     public ParticleSystem OnDrillParticleSystem { get; set; }
-
 
     void Start()
     {
@@ -37,7 +33,7 @@ public class Tile : MonoBehaviour
 
         if (health <= 0)
         {
-            Instantiate(onBreakParticles, transform.position, Quaternion.identity);
+            SendMessage("OnTileBreak", info);
             Destroy(gameObject);
         }
     }
