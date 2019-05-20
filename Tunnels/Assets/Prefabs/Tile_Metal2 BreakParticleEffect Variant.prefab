@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6024203347619263414, guid: 4e5fcc73fa2305649aae6f9983b4fb9a,
         type: 3}
       propertyPath: m_Name
-      value: Tile_Metal2 BreakParticleEffect
+      value: Tile_Metal2 BreakParticleEffect Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6024203347619263418, guid: 4e5fcc73fa2305649aae6f9983b4fb9a,
         type: 3}
@@ -70,17 +70,17 @@ PrefabInstance:
     - target: {fileID: 6024203347619263413, guid: 4e5fcc73fa2305649aae6f9983b4fb9a,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6024203347619263413, guid: 4e5fcc73fa2305649aae6f9983b4fb9a,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
       value: 0.28627455
       objectReference: {fileID: 0}
     - target: {fileID: 6024203347619263413, guid: 4e5fcc73fa2305649aae6f9983b4fb9a,
         type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.92343014
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024203347619263413, guid: 4e5fcc73fa2305649aae6f9983b4fb9a,
+        type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.31341356
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5fcc73fa2305649aae6f9983b4fb9a, type: 3}
