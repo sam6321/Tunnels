@@ -16,29 +16,6 @@ public class DrillAttackInfo
     }
 }
 
-[System.Serializable]
-public class Cooldown
-{
-    [SerializeField]
-    private float frequency;
-    private float last = 0.0f;
-
-    public Cooldown(float frequency)
-    {
-        this.frequency = frequency;
-    }
-
-    public bool Check(float time)
-    {
-        if(time >= last + frequency)
-        {
-            last = time;
-            return true;
-        }
-        return false;
-    }
-}
-
 public class PlayerDrill : MonoBehaviour
 {
     [SerializeField]
@@ -64,6 +41,7 @@ public class PlayerDrill : MonoBehaviour
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
+        direction.y = Mathf.Clamp(direction.y, -1, 0);
 
         UpdateDrillRotation(direction);
 

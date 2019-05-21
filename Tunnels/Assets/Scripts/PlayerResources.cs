@@ -4,9 +4,10 @@ using UnityEngine.Events;
 
 public enum ResourceType
 {
-    Resource1 = 0,
-    Resource2,
-    Resource3
+    Iron = 0,
+    Gold,
+    Diamonds,
+    Oil
 }
 
 public class PlayerResources : MonoBehaviour
