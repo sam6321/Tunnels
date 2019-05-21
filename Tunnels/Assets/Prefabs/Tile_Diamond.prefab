@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 1
-  type: 1
+  type: 2
 --- !u!1001 &6130467609483594587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38,7 +38,28 @@ PrefabInstance:
     - target: {fileID: 9047402368999697593, guid: 44e9296dc530e1f428e43d1b37b70440,
         type: 3}
       propertyPath: m_Name
-      value: Tile_Metal2 Variant
+      value: Tile_Diamond
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782838299000796222, guid: 44e9296dc530e1f428e43d1b37b70440,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1be620823c7fe8b4aba3d63f0b60fb3e,
+        type: 3}
+    - target: {fileID: 2782838299000796222, guid: 44e9296dc530e1f428e43d1b37b70440,
+        type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782838299000796222, guid: 44e9296dc530e1f428e43d1b37b70440,
+        type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491560750745431246, guid: 44e9296dc530e1f428e43d1b37b70440,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.drawMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8400742050030381943, guid: 44e9296dc530e1f428e43d1b37b70440,
         type: 3}
@@ -95,12 +116,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2782838299000796222, guid: 44e9296dc530e1f428e43d1b37b70440,
+    - target: {fileID: 8400742050030381943, guid: 44e9296dc530e1f428e43d1b37b70440,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1be620823c7fe8b4aba3d63f0b60fb3e,
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400742050030381943, guid: 44e9296dc530e1f428e43d1b37b70440,
         type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44e9296dc530e1f428e43d1b37b70440, type: 3}
 --- !u!1 &2926529742294214626 stripped

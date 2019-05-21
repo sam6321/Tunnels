@@ -209,7 +209,7 @@ PrefabInstance:
     - target: {fileID: 5108523156607942507, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}
       propertyPath: m_Name
-      value: Metal2 Resource
+      value: Gold Resource
       objectReference: {fileID: 0}
     - target: {fileID: 716955097820940192, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}
@@ -340,7 +340,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1be620823c7fe8b4aba3d63f0b60fb3e,
+      objectReference: {fileID: 21300000, guid: 9a47dadd494e8bd4286c30a98ea245e0,
         type: 3}
     - target: {fileID: 2880831156725471581, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}
@@ -1002,7 +1002,7 @@ PrefabInstance:
     - target: {fileID: 5108523156607942507, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}
       propertyPath: m_Name
-      value: Metal3 Resource
+      value: Diamond Resource
       objectReference: {fileID: 0}
     - target: {fileID: 716955097820940192, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}
@@ -1133,7 +1133,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5119ecf7e544bba43ab4be2d48e1006b,
+      objectReference: {fileID: 21300000, guid: 1be620823c7fe8b4aba3d63f0b60fb3e,
         type: 3}
     - target: {fileID: 2880831156725471581, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}
@@ -6048,7 +6048,7 @@ PrefabInstance:
     - target: {fileID: 5108523156607942507, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}
       propertyPath: m_Name
-      value: Metal1 Resource
+      value: Iron Resource
       objectReference: {fileID: 0}
     - target: {fileID: 716955097820940192, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}
@@ -6179,7 +6179,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9a47dadd494e8bd4286c30a98ea245e0,
+      objectReference: {fileID: 21300000, guid: 5119ecf7e544bba43ab4be2d48e1006b,
         type: 3}
     - target: {fileID: 2880831156725471581, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}
