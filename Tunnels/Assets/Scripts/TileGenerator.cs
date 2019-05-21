@@ -12,6 +12,9 @@ public class TileGenerator : MonoBehaviour
     private WeightedRandomTileEntry[] tilePrefabs;
 
     [SerializeField]
+    private GameObject tileWallPrefab;
+
+    [SerializeField]
     private Vector2 tilingSize = new Vector2(0.5f, 0.5f);
 
     [SerializeField]
@@ -36,9 +39,18 @@ public class TileGenerator : MonoBehaviour
         {
             for(int y = 0; y < size.y; y++)
             {
-                GameObject tile = Instantiate(tileWeightedRandom.GetItem(), tileContainer);
+                GameObject tile;
+                if(x == 0 || ((x == 0 || x == size.x - 1) && y == 0) || x == size.x - 1 || y == size.y - 1)
+                {
+                    tile = Instantiate(tileWallPrefab, tileContainer);
+                }
+                else
+                {
+                    tile = Instantiate(tileWeightedRandom.GetItem(), tileContainer);
+                    tile.GetComponent<Tile>().OnDrillParticleSystem = sharedOnDrillParticleSystem;
+                }
+                
                 tile.transform.position = new Vector3(x, -y) * tilingSize;
-                tile.GetComponent<Tile>().OnDrillParticleSystem = sharedOnDrillParticleSystem;
             }
         }
     }

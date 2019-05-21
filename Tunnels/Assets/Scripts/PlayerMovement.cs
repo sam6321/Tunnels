@@ -23,7 +23,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
-        spriteRenderer.flipX = movement.x < 0;
+        if (movement.x != 0)
+        {
+            spriteRenderer.flipX = movement.x < 0;
+        }
     }
 
     void FixedUpdate()

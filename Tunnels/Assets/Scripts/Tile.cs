@@ -6,6 +6,9 @@ public class Tile : MonoBehaviour
     [SerializeField]
     private int health = 10;
 
+    [SerializeField]
+    private bool invulnerable = false;
+
     private int startHealth;
     private float healthLerp;
 
@@ -31,6 +34,11 @@ public class Tile : MonoBehaviour
 
     void OnDrillAttack(DrillAttackInfo info)
     {
+        if(invulnerable)
+        {
+            return;
+        }
+
         health -= info.damage;
 
         /*Color colour = spriteRenderer.color;
