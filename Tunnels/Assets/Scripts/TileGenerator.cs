@@ -64,4 +64,21 @@ public class TileGenerator : MonoBehaviour
     {
         tiles[x + y * size.y] = tile;
     }
+
+    public Bounds GetSpawnArea()
+    {
+        return new Bounds()
+        {
+            center = new Vector2
+            (
+                transform.position.x + ((size.x - 1) * tilingSize.x) / 2.0f,
+                transform.position.y + 2
+            ),
+            extents = new Vector2
+            (
+                ((size.x - 1) * tilingSize.x) / 2.0f,
+                2
+            )
+        };
+    }
 }

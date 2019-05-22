@@ -638,8 +638,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d690d46fcf9da54291e07ad89d2f4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1508283261}
+  transformTarget: {fileID: 0}
   smoothing: 5
+  offset: {x: 0, y: 0, z: -10}
 --- !u!1 &1219878371
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,6 +780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1335506051}
+  - component: {fileID: 1335506052}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -800,6 +802,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1335506052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335506050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d51d2be43a0ad7448fa7da0654d15a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1508283260}
+  movement: {fileID: 963194229}
+  tileGenerator: {fileID: 2091831341}
 --- !u!1 &1459667148
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +951,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 10
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1

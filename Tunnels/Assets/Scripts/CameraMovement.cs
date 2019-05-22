@@ -5,23 +5,39 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField]
-    private Transform target;
+    private Transform transformTarget;
+
+    [SerializeField]
+    private Vector3? positionTarget;
 
     [SerializeField]
     private float smoothing = 5.0f;
 
-    private Vector3 offset;
+    [SerializeField]
+    private Vector3 offset = new Vector3(0, 0, -10);
 
-    // Start is called before the first frame update
-    void Start()
+    public Transform TransformTarget { get => transformTarget; set => transformTarget = value; }
+    public Vector3? PositionTarget { get => positionTarget; set => positionTarget = value; }
+
+    public Vector3? GetCurrentTarget()
     {
-        offset = transform.position - target.position;
+        if (transformTarget != null)
+        {
+            return TransformTarget.position;
+        }
+        else
+        {
+            return PositionTarget;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 targetPosition = target.position + offset;
-        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
+        Vector3? target = GetCurrentTarget();
+        if(target.HasValue)
+        {
+            transform.position = Vector3.Lerp(transform.position, target.Value + offset, smoothing * Time.deltaTime);
+        }
     }
 }
