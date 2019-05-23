@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class TileGenerator : MonoBehaviour
 {
@@ -23,12 +24,14 @@ public class TileGenerator : MonoBehaviour
     private WeightedRandom<GameObject> tileWeightedRandom;
     private GameObject[] tiles;
     private ParticleSystem sharedOnDrillParticleSystem;
+    private Transform fallOffTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
         sharedOnDrillParticleSystem = GetComponent<ParticleSystem>();
         tileWeightedRandom = new WeightedRandom<GameObject>(tilePrefabs);
+        fallOffTrigger = transform.Find("FallOffTrigger");
         Generate();
     }
 
@@ -40,7 +43,7 @@ public class TileGenerator : MonoBehaviour
             for(int y = 0; y < size.y; y++)
             {
                 GameObject tile;
-                if(x == 0 || ((x == 0 || x == size.x - 1) && y == 0) || x == size.x - 1 || y == size.y - 1)
+                if(x == 0 || ((x == 0 || x == size.x - 1) && y == 0) || x == size.x - 1 || ((x == 0 || x == size.x - 1) && y == size.y - 1))
                 {
                     tile = Instantiate(tileWallPrefab, tileContainer);
                 }
@@ -51,16 +54,37 @@ public class TileGenerator : MonoBehaviour
                 }
                 
                 tile.transform.position = new Vector3(x, -y) * tilingSize;
+                SetTile(x, y, tile);
             }
         }
+
+        // Place the fall of trigger under the map, and make sure it's the right size
+        Vector2 centre = GetCentre();
+        Vector2 extent = GetExtent();
+        centre.y -= extent.y;
+        extent.x *= 2.0f;
+        fallOffTrigger.position = centre;
+        fallOffTrigger.localScale = extent;
     }
 
-    GameObject GetTile(int x, int y)
+    public GameObject GetTile(int x, int y)
     {
         return tiles[x + y * size.y];
     }
 
-    void SetTile(int x, int y, GameObject tile)
+    public Vector2 GetCentre()
+    {
+        Vector2 offset = GetExtent();
+        offset.y = -offset.y;
+        return (Vector2)transform.position + offset / 2.0f;
+    }
+
+    public Vector2 GetExtent()
+    {
+        return ((size - Vector2.one) * tilingSize);
+    }
+
+    private void SetTile(int x, int y, GameObject tile)
     {
         tiles[x + y * size.y] = tile;
     }
@@ -80,5 +104,26 @@ public class TileGenerator : MonoBehaviour
                 2
             )
         };
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(PlayerFallOff(collider));
+        }
+    }
+
+    IEnumerator PlayerFallOff(Collider2D collider)
+    {
+        // player has hit the bottom, so let them fall then move them back up to the top for respawn
+        PlayerMovement playerMovement = collider.GetComponent<PlayerMovement>();
+        playerMovement.enabled = false;
+        Camera.main.GetComponent<CameraMovement>().TransformTarget = null;
+
+        yield return new WaitForSeconds(2.0f);
+
+        playerMovement.enabled = true;
+        GameObject.Find("GameManager").GetComponent<PlayerSpawnPositioner>().enabled = true;
     }
 }

@@ -1,34 +1,81 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 public enum ResourceType
 {
-    Iron = 0,
+    Copper = 0,
+    Silver,
     Gold,
+    Platinum,
     Diamonds,
+
+    Iron,
     Oil
 }
 
 public class PlayerResources : MonoBehaviour
 {
+    private static ResourceType[] scoringResource =
+    {
+        ResourceType.Copper,
+        ResourceType.Silver,
+        ResourceType.Gold,
+        ResourceType.Platinum,
+        ResourceType.Diamonds
+    };
+
     [Serializable]
     public class ResourceCountModifedEvent : UnityEvent<ResourceType, int, PlayerResources> { }
 
-    private int[] resourceCounts = new int[Enum.GetNames(typeof(ResourceType)).Length];
+    [Serializable]
+    public class ResourceEntry
+    {
+        public ResourceType type;
+        public int multiplier;
+        public int count;
+
+        public int Score { get => multiplier * count; }
+    }
+
+    [SerializeField]
+    private ResourceEntry[] resources = new ResourceEntry[Enum.GetNames(typeof(ResourceType)).Length];
 
     [SerializeField]
     private ResourceCountModifedEvent onResourceCountModified;
     public ResourceCountModifedEvent OnResourceCountModified { get => onResourceCountModified; }
 
-    public void SetResource(ResourceType type, int count)
+    public int Score { get => scoringResource.Sum(GetResourceScore); }
+
+    void Start()
     {
-        resourceCounts[(int)type] = count;
+        Array.Sort(resources, (a, b) => a.type - b.type);
+    }
+
+    public void SetResourceCount(ResourceType type, int count)
+    {
+        GetResource(type).count = count;
         onResourceCountModified.Invoke(type, count, this);
     }
 
-    public int GetResource(ResourceType type)
+    public int GetResourceCount(ResourceType type)
     {
-        return resourceCounts[(int)type];
+        return GetResource(type).count;
+    }
+
+    public int GetResourceMultiplier(ResourceType type)
+    {
+        return GetResource(type).multiplier;
+    }
+
+    public int GetResourceScore(ResourceType type)
+    {
+        return GetResource(type).Score;
+    }
+
+    private ResourceEntry GetResource(ResourceType type)
+    {
+        return resources[(int)type];
     }
 }

@@ -15,8 +15,8 @@ public class TileResourceOnBreak : MonoBehaviour
         PlayerResources resources = info.attacker.GetComponent<PlayerResources>();
         if (resources)
         {
-            int current = resources.GetResource(type);
-            resources.SetResource(type, current + amount);
+            int current = resources.GetResourceCount(type);
+            resources.SetResourceCount(type, current + amount);
         }
     }
 }
