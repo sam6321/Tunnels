@@ -30,10 +30,12 @@ public class PlayerDrill : MonoBehaviour
     [SerializeField]
     private Cooldown drillAttackCooldown = new Cooldown(0.5f);
 
+    private PlayerResources resources;
     private int noDrillMask;
 
     void Start()
     {
+        resources = GetComponent<PlayerResources>();
         noDrillMask = ~LayerMask.GetMask("Player");
     }
 
@@ -59,11 +61,12 @@ public class PlayerDrill : MonoBehaviour
 
     void DoDrillAttack(Vector2 direction)
     {
-        Debug.DrawLine(transform.position, (Vector2)transform.position + direction * drillAttackDistance);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, drillAttackDistance, noDrillMask);
         if(hit.collider)
         {
-            hit.collider.gameObject.SendMessage("OnDrillAttack", new DrillAttackInfo(gameObject, drillAttackDamage, hit.point, hit.normal));
+            hit.collider.gameObject.SendMessage("OnDrillAttack", new DrillAttackInfo(gameObject, drillAttackDamage, hit.point, hit.normal), SendMessageOptions.DontRequireReceiver);
         }
+        int oil = resources.GetResourceCount(ResourceType.Oil);
+        resources.SetResourceCount(ResourceType.Oil, Mathf.Max(oil - 1, 0));
     }
 }
