@@ -24,7 +24,7 @@ PrefabInstance:
     - target: {fileID: 9047402368999697593, guid: 44e9296dc530e1f428e43d1b37b70440,
         type: 3}
       propertyPath: m_Name
-      value: Tile_Ground Variant
+      value: Tile_Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8400742050030381943, guid: 44e9296dc530e1f428e43d1b37b70440,
         type: 3}

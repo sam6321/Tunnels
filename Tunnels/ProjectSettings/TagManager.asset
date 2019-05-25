@@ -39,11 +39,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: TileParticle
-    uniqueID: 1154067513
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TileParticle
+    uniqueID: 1154067513
     locked: 0
   - name: Player
     uniqueID: 2902099229

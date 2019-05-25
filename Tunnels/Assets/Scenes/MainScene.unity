@@ -186,7 +186,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1392868067
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f92e190f6ce16064caaf489bb417aee3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1113,7 +1113,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1392868067
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 35a0fd686a0ae3543aca3ff0d018cfcc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1487,13 +1487,19 @@ MonoBehaviour:
   tileContainer: {fileID: 2091831340}
   tilePrefabs:
   - item: {fileID: 3255305836460597154, guid: 2670e52927f82b4419b52d4736a9b12e, type: 3}
-    weight: 30
+    weight: 200
+  - item: {fileID: 1591223931076459725, guid: f08a6d3561276a44385c8a40a972b390, type: 3}
+    weight: 15
   - item: {fileID: 6767406534478193676, guid: b43f202468f349540bfc0cc3ef086c1f, type: 3}
-    weight: 3
+    weight: 15
+  - item: {fileID: 6178579967406354060, guid: 6a97d846cc1d13540a762bd17f3076fd, type: 3}
+    weight: 5
   - item: {fileID: 2926529742294214626, guid: 2391101ddf0078c44b57161d33c4353b, type: 3}
-    weight: 2
+    weight: 3
   - item: {fileID: 7214682701565250348, guid: 84142958ff98f30499d38cbe56f23796, type: 3}
     weight: 1
+  - item: {fileID: 5284127766473400166, guid: c20cf98818b2ad2489aab68ae79da402, type: 3}
+    weight: 5
   tileWallPrefab: {fileID: 3757408647081611100, guid: 99886d32ff0385f47911ec9ea76558da,
     type: 3}
   tilingSize: {x: 0.5, y: 0.5}
@@ -6251,7 +6257,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1154067513
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 3

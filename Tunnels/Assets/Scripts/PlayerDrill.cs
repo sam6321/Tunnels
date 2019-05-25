@@ -28,7 +28,8 @@ public class PlayerDrill : MonoBehaviour
     private int drillAttackDamage = 1;
 
     [SerializeField]
-    private Cooldown drillAttackCooldown = new Cooldown(0.5f);
+    private Cooldown drillAttackCooldown = new Cooldown(0.4f);
+    private float baseCooldown;
 
     private PlayerResources resources;
     private int noDrillMask;
@@ -37,6 +38,7 @@ public class PlayerDrill : MonoBehaviour
     {
         resources = GetComponent<PlayerResources>();
         noDrillMask = ~LayerMask.GetMask("Player");
+        baseCooldown = drillAttackCooldown.Frequency;
     }
 
     void Update()
@@ -44,6 +46,8 @@ public class PlayerDrill : MonoBehaviour
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
         direction.y = Mathf.Clamp(direction.y, -1, 0);
+
+        drillAttackCooldown.Frequency = (1.0f / resources.DrillSpeed) * baseCooldown;
 
         UpdateDrillRotation(direction);
 

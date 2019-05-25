@@ -38,6 +38,7 @@ public class TileGenerator : MonoBehaviour
     void Generate()
     {
         tiles = new GameObject[size.x * size.y];
+
         for(int x = 0; x < size.x; x++)
         {
             for(int y = 0; y < size.y; y++)

@@ -9,7 +9,7 @@ public enum ResourceType
     Silver,
     Gold,
     Platinum,
-    Diamonds,
+    Diamond,
 
     Iron,
     Oil
@@ -104,7 +104,7 @@ public class PlayerResources : MonoBehaviour
             new ScoreResource(ResourceType.Silver,   2, InternalOnScoreResourceModified),
             new ScoreResource(ResourceType.Gold,     3, InternalOnScoreResourceModified),
             new ScoreResource(ResourceType.Platinum, 6, InternalOnScoreResourceModified),
-            new ScoreResource(ResourceType.Diamonds, 8, InternalOnScoreResourceModified),
+            new ScoreResource(ResourceType.Diamond, 8, InternalOnScoreResourceModified),
         };
 
         Resource[] drillSpeedResources = new Resource[]

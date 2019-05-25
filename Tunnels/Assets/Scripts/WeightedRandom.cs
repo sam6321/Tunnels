@@ -22,9 +22,9 @@ class WeightedRandom<T>
     public T GetItem()
     {
         int weight = Random.Range(0, totalWeight);
-        foreach(WeightedRandomEntry<T> entry in items)
+        foreach (WeightedRandomEntry<T> entry in items)
         {
-            if(weight < entry.weight)
+            if (weight < entry.weight)
             {
                 return entry.item;
             }

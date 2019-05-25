@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4892448365695110758
+--- !u!1001 &7081302132044817041
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6024203347619263414, guid: 4e5fcc73fa2305649aae6f9983b4fb9a,
         type: 3}
       propertyPath: m_Name
-      value: Tile_Gold BreakParticleEffect
+      value: Tile_Platinum BreakParticleEffect
       objectReference: {fileID: 0}
     - target: {fileID: 6024203347619263418, guid: 4e5fcc73fa2305649aae6f9983b4fb9a,
         type: 3}
@@ -70,17 +70,17 @@ PrefabInstance:
     - target: {fileID: 6024203347619263413, guid: 4e5fcc73fa2305649aae6f9983b4fb9a,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.9528302
+      value: 0.26366144
       objectReference: {fileID: 0}
     - target: {fileID: 6024203347619263413, guid: 4e5fcc73fa2305649aae6f9983b4fb9a,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.92226774
+      value: 0.5053355
       objectReference: {fileID: 0}
     - target: {fileID: 6024203347619263413, guid: 4e5fcc73fa2305649aae6f9983b4fb9a,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.08988963
+      value: 0.745283
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5fcc73fa2305649aae6f9983b4fb9a, type: 3}

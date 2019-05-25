@@ -8,9 +8,11 @@ public class Cooldown
     private float frequency;
     private float last = 0.0f;
 
+    public float Frequency { get => frequency; set => frequency = value; }
+
     public Cooldown(float frequency)
     {
-        this.frequency = frequency;
+        Frequency = frequency;
     }
 
     public bool Check(float time)

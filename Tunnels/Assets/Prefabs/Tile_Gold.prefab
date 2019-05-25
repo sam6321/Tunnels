@@ -28,6 +28,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 1
   type: 2
+  onBreakPopup: {fileID: 5646976278738203235, guid: 1104da9f669b44640b4e90ff318fa4aa,
+    type: 3}
+  overrideText: 
 --- !u!1001 &2334127841458505909
 PrefabInstance:
   m_ObjectHideFlags: 0

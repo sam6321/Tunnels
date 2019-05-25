@@ -9,7 +9,8 @@ public class TileSpawnOnBreak : MonoBehaviour
 
     private void OnTileBreak(DrillAttackInfo info)
     {
-        foreach(GameObject onBreakObject in onBreakObjects) {
+        foreach(GameObject onBreakObject in onBreakObjects)
+        {
             Instantiate(onBreakObject, transform.position, Quaternion.identity);
         }
     }
