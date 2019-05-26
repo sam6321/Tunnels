@@ -45,4 +45,9 @@ public class TileResourceOnBreak : MonoBehaviour
             }
         }
     }
+
+    public ResourceType GetResourceType()
+    {
+        return type;
+    }
 }
