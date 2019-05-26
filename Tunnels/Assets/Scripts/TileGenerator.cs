@@ -86,6 +86,11 @@ public class TileGenerator : MonoBehaviour
         return ((size - Vector2.one) * tilingSize);
     }
 
+    public Vector2 GetTileSize()
+    {
+        return tilingSize;
+    }
+
     private void SetTile(int x, int y, GameObject tile)
     {
         tiles[x,y] = tile;
