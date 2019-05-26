@@ -14,6 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onBreakObjects:
   - {fileID: 5772647355907498911, guid: af8c3f056cea4a64ab49b090683000f2, type: 3}
+--- !u!114 &4664328921295333143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591223931076459725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc05af82bf1a98543bd0e421a9dd40e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onBreakSoundPrefab: {fileID: 4839370544984421545, guid: 25798cd219804d642a74566c65246ae2,
+    type: 3}
+  onBreakSounds: {fileID: 11400000, guid: a94e3c3f42b33214aabdff6d89101d61, type: 2}
 --- !u!114 &5232790338073486194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,7 +45,6 @@ MonoBehaviour:
   type: 0
   onBreakPopup: {fileID: 5646976278738203235, guid: 1104da9f669b44640b4e90ff318fa4aa,
     type: 3}
-  overrideText: 
 --- !u!1001 &7754069604328575092
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,9 +9,13 @@ public class Tile : MonoBehaviour
     [SerializeField]
     private bool invulnerable = false;
 
+    [SerializeField]
+    private AudioGroup onHitSounds;
+
     private int startHealth;
     private float healthLerp;
 
+    private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
     private SpriteMask mask;
     private ParticleSystem.EmitParams p = new ParticleSystem.EmitParams();
@@ -20,6 +24,7 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         mask = GetComponent<SpriteMask>();
         startHealth = health;
@@ -58,6 +63,7 @@ public class Tile : MonoBehaviour
         p.position = new Vector3(0, 0, -1) + (Vector3)(info.position + info.normal * 0.01f);
         p.velocity = info.normal + Random.insideUnitCircle * 1.5f;
         OnDrillParticleSystem.Emit(p, Random.Range(1, 2));
+        audioSource.PlayOneShot(onHitSounds.GetRandom());
 
         if (health <= 0)
         {

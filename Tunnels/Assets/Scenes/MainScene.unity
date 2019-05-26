@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1106,6 +1106,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Score
       objectReference: {fileID: 0}
+    - target: {fileID: 2681897755509097223, guid: 367bf3cdc7c2a364483819abb0d57f6e,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681897755509097223, guid: 367bf3cdc7c2a364483819abb0d57f6e,
+        type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 716955097820940192, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1276,16 +1286,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 2681897755509097223, guid: 367bf3cdc7c2a364483819abb0d57f6e,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 2681897755509097223, guid: 367bf3cdc7c2a364483819abb0d57f6e,
-        type: 3}
-      propertyPath: m_FontData.m_LineSpacing
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9145099926686567252, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}
@@ -1892,10 +1892,9 @@ GameObject:
   - component: {fileID: 1508283263}
   - component: {fileID: 1508283262}
   - component: {fileID: 1508283265}
-  - component: {fileID: 1508283269}
   - component: {fileID: 1508283266}
-  - component: {fileID: 1508283268}
   - component: {fileID: 1508283267}
+  - component: {fileID: 1508283268}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2033,6 +2032,7 @@ MonoBehaviour:
   drillAttackDamage: 1
   drillAttackCooldown:
     frequency: 0.1
+  drillLoop: {fileID: 8300000, guid: 8b3bf34c5d9fb27488df17458f25e519, type: 3}
 --- !u!114 &1508283267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,37 +2061,102 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: ScoreModifiedEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &1508283268
-MonoBehaviour:
+--- !u!82 &1508283268
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508283260}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a3683363a151580d8b940eab53a68b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drillTransform: {fileID: 1276051656}
-  drillAttackDistance: 0.5
-  drillAttackDamage: 1
-  drillAttackCooldown:
-    frequency: 0.1
---- !u!114 &1508283269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508283260}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7feee17896b8e23d799f258e4ce9bc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 2000
-  tileSize: {x: 0, y: 0}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.8
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &2064515842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2103,6 +2168,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Score
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681897755509097223, guid: 367bf3cdc7c2a364483819abb0d57f6e,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681897755509097223, guid: 367bf3cdc7c2a364483819abb0d57f6e,
+        type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 716955097820940192, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}
@@ -2274,16 +2349,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 2681897755509097223, guid: 367bf3cdc7c2a364483819abb0d57f6e,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 2681897755509097223, guid: 367bf3cdc7c2a364483819abb0d57f6e,
-        type: 3}
-      propertyPath: m_FontData.m_LineSpacing
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9145099926686567252, guid: 367bf3cdc7c2a364483819abb0d57f6e,
         type: 3}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792561aa97a4e6143a560b2d21723c48, type: 3}
+  m_Name: Tile Break Dirt
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: cbfeaa2348d922547ae81000b9e30182, type: 3}
+  - {fileID: 8300000, guid: f74d14230e3c2a14b950c65e053d4c9c, type: 3}
+  - {fileID: 8300000, guid: bcf916785789ec74e8f527423c84de90, type: 3}
+  - {fileID: 8300000, guid: 61ae9f55bdf39b64ea4135b51aa9e240, type: 3}
+  - {fileID: 8300000, guid: b79d558f1535faf419ffd375a2e8446a, type: 3}

@@ -31,11 +31,16 @@ public class PlayerDrill : MonoBehaviour
     private Cooldown drillAttackCooldown = new Cooldown(0.4f);
     private float baseCooldown;
 
+    [SerializeField]
+    private AudioClip drillLoop;
+
+    private AudioSource audioSource;
     private PlayerResources resources;
     private int noDrillMask;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         resources = GetComponent<PlayerResources>();
         noDrillMask = ~LayerMask.GetMask("Player");
         baseCooldown = drillAttackCooldown.Frequency;
@@ -51,9 +56,23 @@ public class PlayerDrill : MonoBehaviour
 
         UpdateDrillRotation(direction);
 
-        if(drillAttackCooldown.Check(Time.time) && Input.GetButton("Fire1"))
+        bool drillButtonDown = Input.GetButton("Fire1");
+        if(drillAttackCooldown.Check(Time.time) && drillButtonDown)
         {
             DoDrillAttack(direction);
+        }
+
+        if(drillButtonDown)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = drillLoop;
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Stop();
         }
     }
 

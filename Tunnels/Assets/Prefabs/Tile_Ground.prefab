@@ -14,6 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onBreakObjects:
   - {fileID: 1503234114450495321, guid: e3693bd26e6033544b50c7a5add8b30e, type: 3}
+--- !u!114 &2711880882483600681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3255305836460597154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc05af82bf1a98543bd0e421a9dd40e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onBreakSoundPrefab: {fileID: 4839370544984421545, guid: 25798cd219804d642a74566c65246ae2,
+    type: 3}
+  onBreakSounds: {fileID: 11400000, guid: 98bab5e2fd354154abc7526806ef396c, type: 2}
 --- !u!1001 &5810769340986585883
 PrefabInstance:
   m_ObjectHideFlags: 0
