@@ -32,6 +32,16 @@ public class Tile : MonoBehaviour
         mask.alphaCutoff = 1 - Mathf.InverseLerp(0, startHealth, health);
     }
 
+    public bool GetInvulnerable()
+    {
+        return invulnerable;
+    }
+
+    public int GetHealth()
+    {
+        return health;
+    }
+
     void OnDrillAttack(DrillAttackInfo info)
     {
         if(invulnerable)
