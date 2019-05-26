@@ -119,6 +119,14 @@ public class TileGenerator : MonoBehaviour
         {
             StartCoroutine(PlayerFallOff(collider));
         }
+        else if(collider.gameObject.CompareTag("AI"))
+        {
+            StartCoroutine(AiFallOff(collider));
+        }
+        else
+        {
+           Debug.Log(collider.gameObject.tag);
+    }
     }
 
     IEnumerator PlayerFallOff(Collider2D collider)
@@ -132,5 +140,16 @@ public class TileGenerator : MonoBehaviour
 
         playerMovement.enabled = true;
         GameObject.Find("GameManager").GetComponent<PlayerSpawnPositioner>().enabled = true;
+    }
+
+    IEnumerator AiFallOff(Collider2D collider)
+    {
+        yield return new WaitForSeconds(2.0f);
+        GameObject.Find("GameManager").GetComponent<AiSpawnPositioner>().enabled = true;
+    }
+
+    public Vector2Int GetSize()
+    {
+        return size;
     }
 }
