@@ -22,7 +22,7 @@ public class TileGenerator : MonoBehaviour
     private Vector2Int size = new Vector2Int(10, 10);
 
     private WeightedRandom<GameObject> tileWeightedRandom;
-    private GameObject[] tiles;
+    private GameObject[,] tiles;
     private ParticleSystem sharedOnDrillParticleSystem;
     private Transform fallOffTrigger;
 
@@ -37,8 +37,7 @@ public class TileGenerator : MonoBehaviour
 
     void Generate()
     {
-        tiles = new GameObject[size.x * size.y];
-
+        tiles = new GameObject[size.x, size.y];
         for(int x = 0; x < size.x; x++)
         {
             for(int y = 0; y < size.y; y++)
@@ -65,12 +64,14 @@ public class TileGenerator : MonoBehaviour
         centre.y -= extent.y;
         extent.x *= 2.0f;
         fallOffTrigger.position = centre;
-        fallOffTrigger.localScale = extent;
+        fallOffTrigger.localScale = extent;	
     }
 
     public GameObject GetTile(int x, int y)
     {
-        return tiles[x + y * size.y];
+        if(x < 0 || x >= size.x || y < 0 || y >= size.y)
+            return null;
+        return tiles[x,y];
     }
 
     public Vector2 GetCentre()
@@ -87,7 +88,7 @@ public class TileGenerator : MonoBehaviour
 
     private void SetTile(int x, int y, GameObject tile)
     {
-        tiles[x + y * size.y] = tile;
+        tiles[x,y] = tile;
     }
 
     public Bounds GetSpawnArea()
