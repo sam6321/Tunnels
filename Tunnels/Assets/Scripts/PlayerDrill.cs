@@ -31,9 +31,6 @@ public class PlayerDrill : MonoBehaviour
     private Cooldown drillAttackCooldown = new Cooldown(0.4f);
     private float baseCooldown;
 
-    [SerializeField]
-    private AudioClip drillLoop;
-
     private AudioSource audioSource;
     private PlayerResources resources;
     private int noDrillMask;
@@ -60,19 +57,6 @@ public class PlayerDrill : MonoBehaviour
         if(drillAttackCooldown.Check(Time.time) && drillButtonDown)
         {
             DoDrillAttack(direction);
-        }
-
-        if(drillButtonDown)
-        {
-            if (!audioSource.isPlaying)
-            {
-                audioSource.clip = drillLoop;
-                audioSource.Play();
-            }
-        }
-        else
-        {
-            audioSource.Stop();
         }
     }
 
