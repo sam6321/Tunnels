@@ -82,15 +82,15 @@ public class ResourceManager
         scoreResources = new ScoreResource[]
         {
             new ScoreResource(ResourceType.Copper,   1, scoreModify),
-            new ScoreResource(ResourceType.Silver,   2, scoreModify),
-            new ScoreResource(ResourceType.Gold,     3, scoreModify),
+            new ScoreResource(ResourceType.Iron,     2, scoreModify),
+            new ScoreResource(ResourceType.Silver,   3, scoreModify),
+            new ScoreResource(ResourceType.Gold,     4, scoreModify),
             new ScoreResource(ResourceType.Platinum, 6, scoreModify),
-            new ScoreResource(ResourceType.Diamond, 8, scoreModify),
+            new ScoreResource(ResourceType.Diamond,  8, scoreModify),
         };
 
         Resource[] drillSpeedResources = new Resource[]
         {
-            new Resource(ResourceType.Iron, drillModify),
             new Resource(ResourceType.Oil, drillModify, amount: 100, max: 100)
         };
 

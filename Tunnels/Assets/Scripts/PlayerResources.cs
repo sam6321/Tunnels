@@ -27,6 +27,8 @@ public class PlayerResources : MonoBehaviour
     private float oilSpeed = 0.5f;
     public float OilSpeed => oilSpeed;
 
+    private int lastOilCount = 0;
+
     void Start()
     {
         resourceManager = new ResourceManager(InternalOnScoreResourceModified, InternalOnDrillResourceModified);
@@ -56,9 +58,13 @@ public class PlayerResources : MonoBehaviour
     private void InternalOnDrillResourceModified()
     {
         // Drill base speed is 50% + 5% bonus for each iron the player has, up to 100% at 20 iron
-        drillBaseSpeed = Mathf.Min(0.5f + GetResourceCount(ResourceType.Iron) * 0.05f, 1.0f);
+        if(GetResourceCount(ResourceType.Oil) > lastOilCount)
+        {
+            drillBaseSpeed = Mathf.Min(drillBaseSpeed + 0.05f, 1.0f);
+        }
         // Oil bonus speed is 0.5% per oil, increasing drill speed up to 100%
         oilSpeed = Mathf.Min(GetResourceCount(ResourceType.Oil) / 200.0f, 1.0f - drillBaseSpeed);
         drillSpeed = drillBaseSpeed + oilSpeed;
+        lastOilCount = GetResourceCount(ResourceType.Oil);
     }
 }
