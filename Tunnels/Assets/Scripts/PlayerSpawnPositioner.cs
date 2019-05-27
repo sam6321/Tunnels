@@ -13,10 +13,18 @@ public class PlayerSpawnPositioner : MonoBehaviour
     [SerializeField]
     private TileGenerator tileGenerator;
 
+    [SerializeField]
+    private AiSpawnPositioner aiSpawnPositioner;
+
+    [SerializeField]
+    private GameObject ai;
+
     private Bounds spawnArea;
     private Rigidbody2D playerRigidBody;
     private SpriteRenderer playerSpriteRenderer;
     private PlayerDrill playerDrill;
+
+    private bool firstSpawn = true;
 
     void OnEnable()
     {
@@ -51,6 +59,13 @@ public class PlayerSpawnPositioner : MonoBehaviour
             movement.TransformTarget = player.transform;
             movement.PositionTarget = null;
             enabled = false;
+            if(firstSpawn)
+            {
+                firstSpawn = false;
+                aiSpawnPositioner.OnEnable();
+                aiSpawnPositioner.Update();
+                ai.SetActive(true);
+            }
         }
     }
 }

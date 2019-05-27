@@ -14,13 +14,13 @@ public class AiSpawnPositioner : MonoBehaviour
 
     private Bounds spawnArea;
 
-    void OnEnable()
+    public void OnEnable()
     {
         spawnArea = tileGenerator.GetSpawnArea();
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
     }
 
-    void Update()
+    public void Update()
     {
         Vector2 size = playerSpriteRenderer.size / 2.0f;
         Vector2 newPos = new Vector2();
