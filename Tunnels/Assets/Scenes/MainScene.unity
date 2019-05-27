@@ -339,7 +339,7 @@ MonoBehaviour:
   drillAttackDistance: 0.5
   drillAttackDamage: 1
   drillAttackCooldown:
-    frequency: 0.1
+    frequency: 0.05
 --- !u!114 &284160738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2033,7 +2033,7 @@ MonoBehaviour:
   drillAttackDistance: 0.5
   drillAttackDamage: 1
   drillAttackCooldown:
-    frequency: 0.1
+    frequency: 0.05
 --- !u!114 &1508283267
 MonoBehaviour:
   m_ObjectHideFlags: 0
