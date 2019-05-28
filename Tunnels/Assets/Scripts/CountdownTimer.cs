@@ -6,6 +6,7 @@ using System.Globalization;
 public class CountdownTimer : MonoBehaviour
 {
     // Start, end
+    [System.Serializable]
     public class OnTimerExpired : UnityEvent<float, float> { };
 
     [SerializeField]
@@ -36,13 +37,14 @@ public class CountdownTimer : MonoBehaviour
     void Start()
     {
         text = GetComponent<Text>();
+        SetText(period);
         if (startOnSpawn)
         {
             Restart();
         }
     }
 
-    void Restart()
+    public void Restart()
     {
         start = Time.time;
         end = start + period;
@@ -62,7 +64,12 @@ public class CountdownTimer : MonoBehaviour
         }
         else
         {
-            text.text = TimeLeft.ToString("F2", format);
+            SetText(TimeLeft);
         }
+    }
+
+    void SetText(float value)
+    {
+        text.text = value.ToString("F2", format);
     }
 }

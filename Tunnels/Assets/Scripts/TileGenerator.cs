@@ -32,10 +32,9 @@ public class TileGenerator : MonoBehaviour
         sharedOnDrillParticleSystem = GetComponent<ParticleSystem>();
         tileWeightedRandom = new WeightedRandom<GameObject>(tilePrefabs);
         fallOffTrigger = transform.Find("FallOffTrigger");
-        Generate();
     }
 
-    void Generate()
+    public void Generate()
     {
         tiles = new GameObject[size.x, size.y];
         for(int x = 0; x < size.x; x++)
@@ -126,7 +125,7 @@ public class TileGenerator : MonoBehaviour
         else
         {
            Debug.Log(collider.gameObject.tag);
-    }
+        }
     }
 
     IEnumerator PlayerFallOff(Collider2D collider)
@@ -139,13 +138,13 @@ public class TileGenerator : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         playerMovement.enabled = true;
-        GameObject.Find("GameManager").GetComponent<PlayerSpawnPositioner>().enabled = true;
+        GameObject.Find("GameManager").GetComponent<SpawnPositioner>().SpawnPlayer();
     }
 
     IEnumerator AiFallOff(Collider2D collider)
     {
         yield return new WaitForSeconds(2.0f);
-        GameObject.Find("GameManager").GetComponent<AiSpawnPositioner>().enabled = true;
+        GameObject.Find("GameManager").GetComponent<SpawnPositioner>().SpawnAI();
     }
 
     public Vector2Int GetSize()

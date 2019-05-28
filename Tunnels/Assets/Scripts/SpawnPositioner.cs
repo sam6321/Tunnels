@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerSpawnPositioner : MonoBehaviour
+public class SpawnPositioner : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
+
+    [SerializeField]
+    private GameObject ai;
 
     [SerializeField]
     private CameraMovement movement;
@@ -14,21 +15,18 @@ public class PlayerSpawnPositioner : MonoBehaviour
     private TileGenerator tileGenerator;
 
     [SerializeField]
-    private AiSpawnPositioner aiSpawnPositioner;
+    private CountdownTimer timer;
 
-    [SerializeField]
-    private GameObject ai;
-
-    private Bounds spawnArea;
     private Rigidbody2D playerRigidBody;
     private SpriteRenderer playerSpriteRenderer;
     private PlayerDrill playerDrill;
 
-    private bool firstSpawn = true;
+    private bool firstPlayerSpawn = true;
+    private bool spawningPlayer = false;
 
-    void OnEnable()
+    public void SpawnPlayer()
     {
-        spawnArea = tileGenerator.GetSpawnArea();
+        Bounds spawnArea = tileGenerator.GetSpawnArea();
 
         playerRigidBody = player.GetComponent<Rigidbody2D>();
         playerRigidBody.simulated = false;
@@ -40,10 +38,29 @@ public class PlayerSpawnPositioner : MonoBehaviour
 
         movement.TransformTarget = null;
         movement.PositionTarget = spawnArea.center;
+
+        spawningPlayer = true;
+    }
+
+    public void SpawnAI()
+    {
+        Bounds spawnArea = tileGenerator.GetSpawnArea();
+        Vector2 size = ai.GetComponent<SpriteRenderer>().size / 2.0f;
+        ai.transform.position = new Vector2(
+            Random.Range(spawnArea.min.x + size.x, spawnArea.max.x - size.x),
+            Random.Range(spawnArea.min.y + size.y, spawnArea.max.y - size.y)
+        );
+        ai.SetActive(true);
     }
 
     void Update()
     {
+        if(!spawningPlayer)
+        {
+            return;
+        }
+
+        Bounds spawnArea = tileGenerator.GetSpawnArea();
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 size = playerSpriteRenderer.size / 2.0f;
         worldPosition.x = Mathf.Clamp(worldPosition.x, spawnArea.min.x + size.x, spawnArea.max.x - size.x);
@@ -58,13 +75,12 @@ public class PlayerSpawnPositioner : MonoBehaviour
             playerDrill.enabled = true;
             movement.TransformTarget = player.transform;
             movement.PositionTarget = null;
-            enabled = false;
-            if(firstSpawn)
+            spawningPlayer = false;
+            if(firstPlayerSpawn)
             {
-                firstSpawn = false;
-                aiSpawnPositioner.OnEnable();
-                aiSpawnPositioner.Update();
-                ai.SetActive(true);
+                firstPlayerSpawn = false;
+                SpawnAI();
+                timer.Restart();
             }
         }
     }
