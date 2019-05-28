@@ -23,6 +23,10 @@ public class AiDrill : MonoBehaviour
 
     private AiMovement aiMovement;
     
+    private int sidewaysCount = 0;
+    private int forceDownCount = 0;
+    private float lastYPos = 0;
+
     void Start()
     {
         resources = GetComponent<PlayerResources>();
@@ -43,6 +47,24 @@ public class AiDrill : MonoBehaviour
         {
             var size = aiMovement.tileSize;
             pos = new Vector2((float)next.x, -(float)next.y) * size;
+        }
+
+        if(Mathf.Abs(transform.position.y - lastYPos) > 0.01f || forceDownCount > 100)
+        {
+            sidewaysCount = 0;
+            forceDownCount = 0;
+        }
+        else
+        {
+            sidewaysCount++;
+        }
+
+        lastYPos = transform.position.y;
+
+        if(sidewaysCount > 100)
+        {
+            forceDownCount++;
+            pos = new Vector2(aiMovement.transform.position.x, aiMovement.transform.position.y - 1.0f);
         }
 
         Vector2 direction = (pos - (Vector2)transform.position).normalized;
