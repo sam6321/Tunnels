@@ -6,12 +6,12 @@ using UnityEngine.Events;
 public enum ResourceType
 {
     Copper = 0,
+    Iron,
     Silver,
     Gold,
     Platinum,
     Diamond,
 
-    Iron,
     Oil
 }
 
