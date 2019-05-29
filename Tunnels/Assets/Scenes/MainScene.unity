@@ -5335,7 +5335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc31f1a8f35c90549aa50b536ccc81f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  period: 10
+  period: 60
   startOnSpawn: 0
   onTimerExpired:
     m_PersistentCalls:
