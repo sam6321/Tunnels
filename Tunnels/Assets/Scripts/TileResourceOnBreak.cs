@@ -31,10 +31,10 @@ public class TileResourceOnBreak : MonoBehaviour
                 switch (type)
                 {
                     case ResourceType.Oil:
-                        text.Text = "+" + amount + " oil";
+                        text.Text = "Oil!";
                         break;
                     default:
-                        text.Text = "+" + (resources.Score - score) + " score";
+                        text.Text = "+" + (resources.Score - score);
                         break;
                 }
             }
