@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 1
-  type: 3
+  type: 4
   onBreakPopup: {fileID: 5646976278738203235, guid: 1104da9f669b44640b4e90ff318fa4aa,
     type: 3}
 --- !u!114 &5846311170971378987
