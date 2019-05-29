@@ -33,11 +33,6 @@ public class TileResourceOnBreak : MonoBehaviour
                     case ResourceType.Oil:
                         text.Text = "+" + amount + " oil";
                         break;
-
-                    case ResourceType.Iron:
-                        text.Text = "+5% drill speed";
-                        break;
-
                     default:
                         text.Text = "+" + (resources.Score - score) + " score";
                         break;
