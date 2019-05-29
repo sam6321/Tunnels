@@ -1,9 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private TileGenerator tileGenerator;
+
+    [SerializeField]
+    private Animator timerAnimator;
+
+    [SerializeField]
+    private FinalScorePanel scorePanel;
 
     private SpawnPositioner spawnPositioner;
 
@@ -16,7 +23,20 @@ public class GameManager : MonoBehaviour
 
     public void OnTimerExpired(float startTime, float endTime)
     {
-        // End game here
+        StartCoroutine(EndGame());
+    }
 
+    IEnumerator EndGame()
+    {
+        // Beep and flash the timer a few times
+        timerAnimator.SetTrigger("flash");
+        // disable player and AI movement
+        spawnPositioner.FreezePlayer();
+        spawnPositioner.FreezeAI();
+        // start beep sound
+        yield return new WaitForSeconds(2.0f);
+
+        // show score panel
+        scorePanel.ShowScores();
     }
 }

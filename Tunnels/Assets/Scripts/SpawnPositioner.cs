@@ -17,25 +17,63 @@ public class SpawnPositioner : MonoBehaviour
     [SerializeField]
     private CountdownTimer timer;
 
+    private PlayerMovement playerMovement;
     private Rigidbody2D playerRigidBody;
     private SpriteRenderer playerSpriteRenderer;
     private PlayerDrill playerDrill;
 
+    private Rigidbody2D aiRigidBody;
+    private AiMovement aiMovement;
+    private AiDrill aiDrill;
+
     private bool firstPlayerSpawn = true;
     private bool spawningPlayer = false;
+
+    void Start()
+    {
+        playerRigidBody = player.GetComponent<Rigidbody2D>();
+        playerMovement = player.GetComponent<PlayerMovement>();
+        playerDrill = player.GetComponent<PlayerDrill>();
+        playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
+
+        aiRigidBody = ai.GetComponent<Rigidbody2D>();
+        aiMovement = ai.GetComponent<AiMovement>();
+        aiDrill = ai.GetComponent<AiDrill>();
+    }
+
+    public void FreezePlayer()
+    {
+        playerRigidBody.simulated = false;
+        playerMovement.enabled = false;
+        playerDrill.enabled = false;
+    }
+
+    public void UnfreezePlayer()
+    {
+        playerRigidBody.simulated = true;
+        playerMovement.enabled = true;
+        playerDrill.enabled = true;
+    }
+
+    public void FreezeAI()
+    {
+        aiRigidBody.simulated = false;
+        aiMovement.enabled = false;
+        aiDrill.enabled = false;
+    }
+
+    public void UnfreezeAI()
+    {
+        aiRigidBody.simulated = true;
+        aiMovement.enabled = true;
+        aiDrill.enabled = true;
+    }
 
     public void SpawnPlayer()
     {
         Bounds spawnArea = tileGenerator.GetSpawnArea();
 
-        playerRigidBody = player.GetComponent<Rigidbody2D>();
-        playerRigidBody.simulated = false;
-
-        playerDrill = player.GetComponent<PlayerDrill>();
-        playerDrill.enabled = false;
-
-        playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
-
+        FreezePlayer();
         movement.TransformTarget = null;
         movement.PositionTarget = spawnArea.center;
 
@@ -71,10 +109,10 @@ public class SpawnPositioner : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             // Spawn the player here
-            playerRigidBody.simulated = true;
-            playerDrill.enabled = true;
+            UnfreezePlayer();
             movement.TransformTarget = player.transform;
             movement.PositionTarget = null;
+
             spawningPlayer = false;
             if(firstPlayerSpawn)
             {

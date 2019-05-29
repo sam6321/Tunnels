@@ -27,11 +27,12 @@ public class CountdownTimer : MonoBehaviour
     private float start = 0;
     private float end = 0;
     private bool expiredFired = false;
+    private bool started = false;
 
     public float Period { get => period; set => period = value; }
     public float TimeLeft => Mathf.Max(end - Time.time, 0);
     public float Progress => Mathf.InverseLerp(start, end, Time.time);
-    public bool Expired => Time.time > end;
+    public bool Expired => Time.time > end && started;
     public bool ExpiredFired => expiredFired;
 
     void Start()
@@ -49,10 +50,16 @@ public class CountdownTimer : MonoBehaviour
         start = Time.time;
         end = start + period;
         expiredFired = false;
+        started = true;
     }
 
     void Update()
     {
+        if(!started)
+        {
+            return;
+        }
+
         if(Expired)
         {
             if (!ExpiredFired)
