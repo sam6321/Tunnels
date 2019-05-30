@@ -11,6 +11,9 @@ public class FinalScorePanel : MonoBehaviour
         public Text copper;
 
         [SerializeField]
+        public Text iron;
+
+        [SerializeField]
         public Text gold;
 
         [SerializeField]
@@ -25,6 +28,7 @@ public class FinalScorePanel : MonoBehaviour
         public void SetFromResources(PlayerResources resources)
         {
             copper.text = "X " + resources.GetResourceCount(ResourceType.Copper);
+            iron.text = "X " + resources.GetResourceCount(ResourceType.Iron);
             gold.text = "X " + resources.GetResourceCount(ResourceType.Gold);
             platinum.text = "X " + resources.GetResourceCount(ResourceType.Platinum);
             diamond.text = "X " + resources.GetResourceCount(ResourceType.Diamond);

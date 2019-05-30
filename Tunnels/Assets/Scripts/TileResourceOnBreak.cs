@@ -28,10 +28,11 @@ public class TileResourceOnBreak : MonoBehaviour
                 Transform parent = GameObject.Find("Canvas").transform;
                 GameObject popup = Instantiate(onBreakPopup, position, Quaternion.identity, parent);
                 ScoreText text = popup.GetComponent<ScoreText>();
+                text.Colour = info.attacker.CompareTag("Player") ? Color.red : Color.blue;
                 switch (type)
                 {
                     case ResourceType.Oil:
-                        text.Text = "Oil!";
+                        text.Text = "Drill Speed!";
                         break;
                     default:
                         text.Text = "+" + (resources.Score - score);

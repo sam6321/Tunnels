@@ -21,33 +21,27 @@ public class ScoreText : MonoBehaviour
 
     public Color Colour
     {
-        get => scoreText ? scoreText.color : colour;
+        get => colour;
         set
         {
             if (scoreText)
             {
                 scoreText.color = value;
             }
-            else
-            {
-                colour = value;
-            }
+            colour = value;
         }
     }
 
     public string Text
     {
-        get => scoreText ? scoreText.text : text;
+        get => text;
         set
         {
             if(scoreText)
             {
                 scoreText.text = value;
             }
-            else
-            {
-                text = value;
-            }
+            text = value;
         }
     }
 

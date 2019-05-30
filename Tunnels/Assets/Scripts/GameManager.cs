@@ -12,12 +12,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private FinalScorePanel scorePanel;
 
+    private AudioSource alarmSound;
     private SpawnPositioner spawnPositioner;
 
     void Start()
     {
-        tileGenerator.Generate();
+        alarmSound = GetComponent<AudioSource>();
         spawnPositioner = GetComponent<SpawnPositioner>();
+
+        tileGenerator.Generate();
         spawnPositioner.SpawnPlayer(); // This also spawns the AI when the player clicks
     }
 
@@ -30,11 +33,14 @@ public class GameManager : MonoBehaviour
     {
         // Beep and flash the timer a few times
         timerAnimator.SetTrigger("flash");
+        alarmSound.Play();
+
         // disable player and AI movement
         spawnPositioner.FreezePlayer();
         spawnPositioner.FreezeAI();
-        // start beep sound
-        yield return new WaitForSeconds(2.0f);
+        spawnPositioner.enabled = false;
+
+        yield return new WaitForSeconds(4.0f);
 
         // show score panel
         scorePanel.ShowScores();
