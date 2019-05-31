@@ -77,6 +77,6 @@ public class FinalScorePanel : MonoBehaviour
     public void OnHideComplete()
     {
         gameObject.SetActive(false);
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
 }

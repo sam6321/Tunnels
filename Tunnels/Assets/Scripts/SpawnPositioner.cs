@@ -3,6 +3,9 @@
 public class SpawnPositioner : MonoBehaviour
 {
     [SerializeField]
+    private GameObject tutorial;
+
+    [SerializeField]
     private GameObject player;
 
     [SerializeField]
@@ -117,6 +120,7 @@ public class SpawnPositioner : MonoBehaviour
             if(firstPlayerSpawn)
             {
                 firstPlayerSpawn = false;
+                tutorial.SetActive(false);
                 SpawnAI();
                 timer.Restart();
             }
