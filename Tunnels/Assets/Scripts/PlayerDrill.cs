@@ -71,9 +71,9 @@ public class PlayerDrill : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, drillAttackDistance, noDrillMask);
         if(hit.collider)
         {
+            int oil = resources.GetResourceCount(ResourceType.Oil);
+            resources.SetResourceCount(ResourceType.Oil, Mathf.Max(oil - 1, 0));
             hit.collider.gameObject.SendMessage("OnDrillAttack", new DrillAttackInfo(gameObject, drillAttackDamage, hit.point, hit.normal), SendMessageOptions.DontRequireReceiver);
         }
-        int oil = resources.GetResourceCount(ResourceType.Oil);
-        resources.SetResourceCount(ResourceType.Oil, Mathf.Max(oil - 1, 0));
     }
 }

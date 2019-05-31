@@ -21,14 +21,13 @@ public class TileResourceOnBreak : MonoBehaviour
             resources.SetResourceCount(type, current + amount);
             int newCount = resources.GetResourceCount(type);
 
-            if (current != newCount)
+            if (current != newCount && info.attacker.CompareTag("Player"))
             {
                 // Changed, so need popup text
                 Vector3 position = Camera.main.WorldToScreenPoint(transform.position);
                 Transform parent = GameObject.Find("Canvas").transform;
                 GameObject popup = Instantiate(onBreakPopup, position, Quaternion.identity, parent);
                 ScoreText text = popup.GetComponent<ScoreText>();
-                text.Colour = info.attacker.CompareTag("Player") ? Color.red : Color.blue;
                 switch (type)
                 {
                     case ResourceType.Oil:

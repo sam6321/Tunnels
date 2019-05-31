@@ -6135,6 +6135,8 @@ MonoBehaviour:
     weight: 5
   tileWallPrefab: {fileID: 3757408647081611100, guid: 99886d32ff0385f47911ec9ea76558da,
     type: 3}
+  tileDownPrefab: {fileID: 5519908469567118662, guid: d18859a5461da3941bc8d6b5f0e5b183,
+    type: 3}
   tilingSize: {x: 0.5, y: 0.5}
   size: {x: 30, y: 30}
 --- !u!198 &2091831342

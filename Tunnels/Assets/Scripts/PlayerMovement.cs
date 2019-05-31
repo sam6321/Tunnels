@@ -42,4 +42,14 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.CircleCast(transform.position, collider.radius, Vector2.down, 0.05f, groundedMask);
         return hit.collider != null;
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.CompareTag("AI"))
+        {
+            Vector2 backoff = (collision.rigidbody.position - collision.otherRigidbody.position).normalized * 500.0f;
+            collision.rigidbody.AddForce(backoff);
+            collision.otherRigidbody.AddForce(-backoff);
+        }
+    }
 }
