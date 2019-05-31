@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,14 @@ public class GameManager : MonoBehaviour
     public void OnTimerExpired(float startTime, float endTime)
     {
         StartCoroutine(EndGame());
+    }
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     IEnumerator EndGame()

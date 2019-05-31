@@ -16,7 +16,7 @@ public class TileGenerator : MonoBehaviour
     private GameObject tileWallPrefab;
 
     [SerializeField]
-    private GameObject tileDownPrefab;
+    private GameObject tileDownTutorial;
 
     [SerializeField]
     private Vector2 tilingSize = new Vector2(0.5f, 0.5f);
@@ -60,13 +60,7 @@ public class TileGenerator : MonoBehaviour
             }
         }
 
-        for(int x = 0; x < size.x - 0; x++)
-        {
-            //if (x % 5 == 0)
-            //{
-                Instantiate(tileDownPrefab, new Vector3(x, -size.y - 2) * tilingSize, Quaternion.identity, tileContainer);
-            //}
-        }
+        tileDownTutorial.transform.position = new Vector3(size.x / 2.0f, -size.y - 4.0f) * tilingSize;
 
         // Place the fall of trigger under the map, and make sure it's the right size
         Vector2 centre = GetCentre();

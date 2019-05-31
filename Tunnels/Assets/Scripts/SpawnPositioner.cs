@@ -6,6 +6,9 @@ public class SpawnPositioner : MonoBehaviour
     private GameObject tutorial;
 
     [SerializeField]
+    private GameObject bottomTutorial;
+
+    [SerializeField]
     private GameObject player;
 
     [SerializeField]
@@ -30,6 +33,7 @@ public class SpawnPositioner : MonoBehaviour
     private AiDrill aiDrill;
 
     private bool firstPlayerSpawn = true;
+    private bool secondPlayerSpawn = false;
     private bool spawningPlayer = false;
 
     void Start()
@@ -120,9 +124,15 @@ public class SpawnPositioner : MonoBehaviour
             if(firstPlayerSpawn)
             {
                 firstPlayerSpawn = false;
+                secondPlayerSpawn = true;
                 tutorial.SetActive(false);
                 SpawnAI();
                 timer.Restart();
+            }
+            else if(secondPlayerSpawn)
+            {
+                bottomTutorial.SetActive(false);
+                secondPlayerSpawn = false;
             }
         }
     }
